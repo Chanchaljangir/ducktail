@@ -4,10 +4,19 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const StudentSchema = new Schema({
-    regNo: Number,
-    firstName: String,
+    regNo: {
+        type: Number,
+        required: true
+    },
+    firstName: {
+        type: String,
+        required: true
+    },
     lastName: String,
-    class: String,
+    class: {
+        type: String,
+        required: true
+    },
     student: [{
         subjectName: String,
         marks: Number
