@@ -19,7 +19,7 @@ const StudentSchema = new Schema({
     },
     student: [{
         subjectName: String,
-        marks: Number
+        marks: String
     }],
     isDeleted: {
         type: Boolean,

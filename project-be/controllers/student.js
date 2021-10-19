@@ -12,8 +12,10 @@ module.exports = {
             let stuFind = await Student.find({
                 regNo: req.body.regNo
             }).then(async function (data) {
-                if (data) {
+                console.log("data.......", data);
+                if (data.length > 0) {
                     respObj.IsSuccess = false;
+                    respObj.Data = data
                     respObj.Message = "Student already registered"
                     res.status(200).json(respObj);
                 } else {

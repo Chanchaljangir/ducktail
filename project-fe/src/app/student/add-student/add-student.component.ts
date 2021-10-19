@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToasterConfig, ToasterService } from 'angular2-toaster';
 import { StudentServiceService } from '../service/student-service.service';
@@ -30,9 +30,24 @@ export class AddStudentComponent implements OnInit {
       firstName: ["", Validators.required],
       lastName: [""],
       class: ["", Validators.required],
+      subject: this.fb.array([this.subject])
     });
   }
-
+  get subject(): FormGroup {
+    return this.fb.group({
+      subjectName: [""],
+      marks: [""],
+    });
+  }
+  addSubject() {
+    (this.studentForm.get("subject") as FormArray).push(this.subject);
+  }
+  removeSubject(id) {
+    const removeFormArray = <FormArray>this.studentForm.get('subject');
+    removeFormArray.removeAt(id);
+    removeFormArray.markAsDirty();
+    removeFormArray.markAsTouched();
+  }
   onSubmitBtn() {
     this.isSubmited = true;
     this.regNoError = this.studentForm.controls.regNo.invalid;
