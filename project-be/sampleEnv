@@ -1,0 +1,2 @@
+PORT = 32000
+MONGO_DB_CONN_STRING = mongodb+srv://chanchalJangir:C0UIrwcMFaWKU9y5@cluster0.jxb75.mongodb.net/studentDB

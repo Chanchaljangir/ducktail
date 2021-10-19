@@ -1,0 +1,27 @@
+{
+  "name": "ducktail",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chanchaljangir/ducktail.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Chanchaljangir/ducktail/issues"
+  },
+  "homepage": "https://github.com/Chanchaljangir/ducktail#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "noogger": "^0.1.8",
+    "body-parser": "^1.19.0",
+    "mongoose": "^5.7.11"
+  }
+}
