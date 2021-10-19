@@ -1,1 +1,29 @@
-<p>view-student works!</p>
+<div class="main">
+    <div class="hadingDiv">
+        <h1>Employee Data</h1>
+        <button class="btn btn-info addBtn" routerLink="/employee">Add Employee</button>
+    </div>
+    <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>Registeration Number</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Registerted On</th>
+                <th>Class</th>
+                <th>View Details</th>
+            </tr>
+            <tr *ngFor="let stu of stuData">
+                <td>{{stu?.regNo}}</td>
+                <td>{{stu?.firstName}}</td>
+                <td>{{stu?.lastName}}</td>
+                <td>{{stu?.registedOn | date}}</td>
+                <td>{{stu?.class}}</td>
+                <!-- <td><button type="button" class="btn btn-info" (click)="modalOpen(stu?._id)">Allocate</button></td> -->
+                <td><button type="button" class="btn btn-primary" [routerLink]="['/details', stu?._id]">View</button>
+                </td>
+
+            </tr>
+        </table>
+    </div>
+</div>
