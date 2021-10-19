@@ -1,6 +1,6 @@
-<body>
-
-    <form action="/action_page.php" [formGroup]="empForm">
+<toaster-container [toasterconfig]="config"></toaster-container>
+<div class="main">
+    <form action="/action_page.php" [formGroup]="studentForm">
         <div class="container">
             <h1>Student registration form</h1>
             <p>Please fill in this form to add new student.</p>
@@ -8,7 +8,7 @@
             <div>
                 <label for="regNo"><b>Registeration Number</b></label> <sup class="text-danger">*</sup>
                 <input type="text" placeholder="1112799" name="regNo" id="regNo" required formControlName="regNo">
-                <span *ngIf="!empForm.get('regNo').valid && empForm.get('regNo').touched ||(isSubmited && regNoError)"
+                <span *ngIf="!studentForm.get('regNo').valid && studentForm.get('regNo').touched ||(isSubmited && regNoError)"
                     class="error-msg">Registeration number is required
                 </span>
             </div>
@@ -19,22 +19,22 @@
                 <input type="text" placeholder="Chanchal" name="firstName" id="firstName" required
                     formControlName="firstName">
                 <span
-                    *ngIf="!empForm.get('firstName').valid && empForm.get('firstName').touched ||(isSubmited && firstNameError)"
+                    *ngIf="!studentForm.get('firstName').valid && studentForm.get('firstName').touched ||(isSubmited && firstNameError)"
                     class="error-msg">FirstName is required
                 </span>
             </div>
 
             <br>
             <div>
-                <label for="text"><b>LastName</b></label> <sup class="text-danger">*</sup>
-                <input type="lastName" placeholder="Jangir" name="lastName" id="lastName" required
+                <label for="text"><b>LastName</b></label>
+                <input type="text" placeholder="Jangir" name="lastName" id="lastName"
                     formControlName="lastName">
             </div>
             <br>
             <div>
                 <label for="class"><b>Class</b></label> <sup class="text-danger">*</sup>
-                <input type="text" placeholder="MCA" name="class" id="class" formControlName="designation">
-                <span *ngIf="!empForm.get('class').valid && empForm.get('class').touched ||(isSubmited && classError)"
+                <input type="text" placeholder="MCA" name="class" id="class" formControlName="class">
+                <span *ngIf="!studentForm.get('class').valid && studentForm.get('class').touched ||(isSubmited && classError)"
                     class="error-msg">Class is required
                 </span>
             </div>
@@ -46,4 +46,4 @@
         </div>
     </form>
 
-</body>
+</div>

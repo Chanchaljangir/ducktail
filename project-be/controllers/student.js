@@ -13,7 +13,7 @@ module.exports = {
                 regNo: req.body.regNo
             }).then(async function (data) {
                 if (data) {
-                    respObj.IsSuccess = true;
+                    respObj.IsSuccess = false;
                     respObj.Message = "Student already registered"
                     res.status(200).json(respObj);
                 } else {
@@ -23,9 +23,9 @@ module.exports = {
                     res.status(200).json(respObj);
                 }
             })
-            respObj.IsSuccess = true;
-            respObj.Message = "Susscefully added"
-            res.status(200).json(respObj);
+            // respObj.IsSuccess = true;
+            // respObj.Message = "Susscefully added"
+            // res.status(200).json(respObj);
 
         } catch (err) {
             respObj.error = err;

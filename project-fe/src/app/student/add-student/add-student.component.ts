@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToasterConfig, ToasterService } from 'angular2-toaster';
 import { StudentServiceService } from '../service/student-service.service';
 @Component({
   selector: 'app-add-student',
@@ -15,10 +16,10 @@ export class AddStudentComponent implements OnInit {
   regNoError: boolean;
   firstNameError: boolean;
   classError: boolean;
-  // public config: ToasterConfig = new ToasterConfig({ limit: 1 });
+  public config: ToasterConfig = new ToasterConfig({ limit: 1 });
   constructor(private fb: FormBuilder, private studentService: StudentServiceService,
-    private router: Router
-    // private ts: ToasterService,
+    private router: Router,
+    private ts: ToasterService,
   ) { }
   ngOnInit() {
     this.initForm();
@@ -44,10 +45,11 @@ export class AddStudentComponent implements OnInit {
         this.loading = false;
         if (res.IsSuccess) {
           this.loading = false;
-          // this.ts.pop("success", "", "Succfully added");
+          this.ts.pop("success", "", "Succfully registered");
           this.router.navigate(["/view"])
         } else {
           this.loading = false;
+          this.ts.pop("error", "", "Registered failed");
           //console.log("error invalid ");
         }
       },
