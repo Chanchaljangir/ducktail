@@ -17,6 +17,7 @@ export class AddStudentComponent implements OnInit {
   firstNameError: boolean;
   classError: boolean;
   public config: ToasterConfig = new ToasterConfig({ limit: 1 });
+  SubError: boolean;
   constructor(private fb: FormBuilder, private studentService: StudentServiceService,
     private router: Router,
     private ts: ToasterService,
@@ -35,7 +36,7 @@ export class AddStudentComponent implements OnInit {
   }
   get subject(): FormGroup {
     return this.fb.group({
-      subjectName: [""],
+      subjectName: ["", Validators.required],
       marks: [""],
     });
   }
@@ -53,7 +54,7 @@ export class AddStudentComponent implements OnInit {
     this.regNoError = this.studentForm.controls.regNo.invalid;
     this.firstNameError = this.studentForm.controls.firstName.invalid;
     this.classError = this.studentForm.controls.class.invalid;
-
+    this.SubError = this.studentForm.controls.subject.invalid;
     if (this.studentForm.valid) {
       this.loading = true;
       this.studentService.registerStudent(this.studentForm.value).subscribe((res: any) => {
@@ -74,7 +75,8 @@ export class AddStudentComponent implements OnInit {
         }
       );
     } else {
-      console.log("fill all require fields")
+      console.log(this.SubError)
+      this.ts.pop("error", "", "Please fill all require fields");
       this.regNoError = true;
       this.firstNameError = true;
     }

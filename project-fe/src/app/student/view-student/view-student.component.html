@@ -28,13 +28,13 @@
             <ng-container *ngFor="let stu of stuData">
                 <tr *ngFor="let sub of stu?.subject; let i=index">
                     <ng-container *ngIf="i==0;else subdiv">
-                        <td>{{stu?.regNo}}</td>
-                        <td>{{stu?.firstName}}</td>
-                        <td>{{stu?.lastName}}</td>
+                        <td>{{stu?.regNo ? stu?.regNo : '-'}}</td>
+                        <td>{{stu?.firstName ? stu?.firstName : '-'}}</td>
+                        <td>{{stu?.lastName ? stu?.lastNam : '-'}}</td>
                         <td>{{stu?.registedOn | date}}</td>
                         <td>{{stu?.class}}</td>
-                        <td>{{sub?.subjectName}}</td>
-                        <td>{{sub?.marks}}</td>
+                        <td>{{sub?.subjectName ? sub?.subjectName : '-'}}</td>
+                        <td>{{sub?.marks ? sub?.marks : '-'}}</td>
                         <td><a href="" [routerLink]="['/student', stu?._id]">Edit </a> |
                             <a href="" (click)="deleteStudent(stu?._id)">Delete</a>
                         </td>

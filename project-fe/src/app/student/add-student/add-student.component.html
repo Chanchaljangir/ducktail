@@ -43,24 +43,25 @@
             <ng-container formArrayName="subject">
                 <ng-container *ngFor="let awd of studentForm.get('subject')['controls'];
                 let ind = index" [formGroupName]="ind">
-                <div class="full-cover">
-                    <a class="add-installment-btn" href="javascript:void(0);"
-                        (click)="addSubject()">Add</a>
-                </div>
-                <div class="full-cover">
-                    <a class="add-installment-btn" href="javascript:void(0);"
-                        (click)="removeSubject(ind)">Remove</a>
-                </div>
-                <div>
-                    <label for="subjectName"><b>Subject</b></label>
-                    <input type="text" placeholder="JAVA" name="subjectName" formControlName="subjectName">
-                </div>
-                <br>
-                <div>
-                    <label for="marks"><b>marks</b></label>
-                    <input type="text" placeholder="97" name="marks" formControlName="marks">
-                </div>
-                <br>
+                    <div class="full-cover">
+                        <a class="add-installment-btn" href="javascript:void(0);" (click)="addSubject()">Add</a>
+                    </div>
+                    <div class="full-cover">
+                        <a class="add-installment-btn" href="javascript:void(0);"
+                            (click)="removeSubject(ind)">Remove</a>
+                    </div>
+                    <div>
+                        <label for="subjectName"><b>Subject</b></label><sup class="text-danger">*</sup>
+                        <input type="text" placeholder="JAVA" name="subjectName" formControlName="subjectName"/>
+                        <span *ngIf="(isSubmited && SubError)" class="error-msg">Subject is required
+                        </span>
+                    </div>
+                    <br>
+                    <div>
+                        <label for="marks"><b>marks</b></label>
+                        <input type="text" placeholder="97" name="marks" formControlName="marks">
+                    </div>
+                    <br>
                 </ng-container>
             </ng-container>
             <hr>
