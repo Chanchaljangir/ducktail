@@ -27,7 +27,7 @@
                         <td>{{sub?.subjectName}}</td>
                         <td>{{sub?.marks}}</td>
                         <td><a href="" [routerLink]="['/student', stu?._id]">Edit </a> |
-                            <a (click)="editDelete(stu?._id)">Delete</a>
+                            <a href="" (click)="deleteStudent(stu?._id)">Delete</a>
                         </td>
                     </ng-container>
 

@@ -25,12 +25,20 @@ export class ViewStudentComponent implements OnInit {
         this.stuData = res.Data;
       } else {
         this.loading = false;
-        console.log("something wents wrong ");
         this.ts.pop("error", "", "data not fetched");
       }
     });
   }
-  editRecord(id){
-    
+  deleteStudent(id){
+    this.studentService.deleteStudent(id).subscribe((res: any) => {
+      this.loading = false;
+      if (res.IsSuccess) {
+        this.loading = false;
+        this.ts.pop("error", "", "Successfully deleted");
+      } else {
+        this.loading = false;
+        this.ts.pop("error", "", "Something wents wrong");
+      }
+    });
   }
 }

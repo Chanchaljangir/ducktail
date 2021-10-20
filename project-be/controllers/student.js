@@ -79,6 +79,28 @@ module.exports = {
         }
     },
 
+    async deleteStudent(req, res) {
+        let respObj = {
+            IsSuccess: false,
+            Message: "OK.",
+            Data: null,
+        };
+
+        try {
+            let result = await Student.findByIdAndDelete({ _id: req.params.stuId })
+
+            respObj.IsSuccess = true;
+            respObj.Data = result
+            respObj.Message = "Succefully deleted"
+            res.status(200).json(respObj);
+
+        } catch (err) {
+            respObj.error = err;
+            (respObj.message = err.message || "Error while processing db query"),
+                res.status(500).json(respObj);
+        }
+    },
+
     async updateStudentRecord(req, res) {
         let respObj = {
             IsSuccess: false,
@@ -100,5 +122,6 @@ module.exports = {
             (respObj.message = err.message || "Error while processing db query"),
                 res.status(500).json(respObj);
         }
-    }
+    },
+ 
 }

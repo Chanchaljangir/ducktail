@@ -23,6 +23,9 @@ export class StudentServiceService {
   getSpecificStudent(stuId) {
     return this.http.get<any>(environment.baseURL + 'studentById/' + stuId)
   }
+  deleteStudent(stuId) {
+    return this.http.delete<any>(environment.baseURL + 'student/' + stuId)
+  }
   updateStudent(stuId, obj) {
     return this.http.put<any>(environment.baseURL + 'student/' + stuId, obj)
   }
