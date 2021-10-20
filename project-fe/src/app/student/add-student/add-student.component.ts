@@ -75,7 +75,6 @@ export class AddStudentComponent implements OnInit {
         }
       );
     } else {
-      console.log(this.SubError)
       this.ts.pop("error", "", "Please fill all require fields");
       this.regNoError = true;
       this.firstNameError = true;
