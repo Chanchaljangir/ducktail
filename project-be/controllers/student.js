@@ -65,11 +65,34 @@ module.exports = {
         };
 
         try {
-            let result = await Student.find({ _id: req.params.stuId })
+            let result = await Student.findById({ _id: req.params.stuId })
 
             respObj.IsSuccess = true;
             respObj.Data = result
             respObj.Message = "Succefully get all data"
+            res.status(200).json(respObj);
+
+        } catch (err) {
+            respObj.error = err;
+            (respObj.message = err.message || "Error while processing db query"),
+                res.status(500).json(respObj);
+        }
+    },
+
+    async updateStudentRecord(req, res) {
+        let respObj = {
+            IsSuccess: false,
+            Message: "OK.",
+            Data: null,
+        };
+
+        try {
+            let result = await Student.findByIdAndUpdate({ _id: req.params.stuId },
+             req.body)
+
+            respObj.IsSuccess = true;
+            respObj.Data = result
+            respObj.Message = "Succefully update"
             res.status(200).json(respObj);
 
         } catch (err) {

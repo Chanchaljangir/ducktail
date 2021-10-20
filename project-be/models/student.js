@@ -17,7 +17,7 @@ const StudentSchema = new Schema({
         type: String,
         required: true
     },
-    student: [{
+    subject: [{
         subjectName: String,
         marks: String
     }],

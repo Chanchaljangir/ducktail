@@ -1,1 +1,72 @@
-<p>edit-student works!</p>
+<toaster-container [toasterconfig]="config"></toaster-container>
+<div class="main">
+    <form action="/action_page.php" [formGroup]="studentForm">
+        <div class="container">
+            <h1>Student Form</h1>
+            <p>Please fill in this form to add new student.</p>
+            <hr>
+            <div>
+                <label for="regNo"><b>Registeration Number</b></label> <sup class="text-danger">*</sup>
+                <input type="text" placeholder="1112799" name="regNo" id="regNo" required formControlName="regNo">
+                <span
+                    *ngIf="!studentForm.get('regNo').valid && studentForm.get('regNo').touched ||(isSubmited && regNoError)"
+                    class="error-msg">Registeration number is required
+                </span>
+            </div>
+
+            <br>
+            <div>
+                <label for="firstName"><b>FirstName</b></label> <sup class="text-danger">*</sup>
+                <input type="text" placeholder="Chanchal" name="firstName" id="firstName" required
+                    formControlName="firstName">
+                <span
+                    *ngIf="!studentForm.get('firstName').valid && studentForm.get('firstName').touched ||(isSubmited && firstNameError)"
+                    class="error-msg">FirstName is required
+                </span>
+            </div>
+
+            <br>
+            <div>
+                <label for="text"><b>LastName</b></label>
+                <input type="text" placeholder="Jangir" name="lastName" id="lastName" formControlName="lastName">
+            </div>
+            <br>
+            <div>
+                <label for="class"><b>Class</b></label> <sup class="text-danger">*</sup>
+                <input type="text" placeholder="MCA" name="class" id="class" formControlName="class">
+                <span
+                    *ngIf="!studentForm.get('class').valid && studentForm.get('class').touched ||(isSubmited && classError)"
+                    class="error-msg">Class is required
+                </span>
+            </div>
+            <br>
+            <ng-container formArrayName="subject">
+                <ng-container *ngFor="let awd of studentForm.get('subject')['controls'];
+                let ind = index" [formGroupName]="ind">
+                <div class="full-cover">
+                    <a class="add-installment-btn" href="javascript:void(0);"
+                        (click)="addSubject()">Add</a>
+                </div>
+                <div class="full-cover">
+                    <a class="add-installment-btn" href="javascript:void(0);"
+                        (click)="removeSubject(ind)">Remove</a>
+                </div>
+                <div>
+                    <label for="subjectName"><b>Subject</b></label>
+                    <input type="text" placeholder="JAVA" name="subjectName" formControlName="subjectName">
+                </div>
+                <br>
+                <div>
+                    <label for="marks"><b>marks</b></label>
+                    <input type="text" placeholder="97" name="marks" formControlName="marks">
+                </div>
+                <br>
+                </ng-container>
+            </ng-container>
+            <hr>
+
+            <button type="submit" class="registerbtn" (click)="onSubmitBtn()">Update</button>
+        </div>
+    </form>
+
+</div>

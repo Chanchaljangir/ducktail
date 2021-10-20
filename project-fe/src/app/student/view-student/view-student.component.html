@@ -1,7 +1,7 @@
 <div class="main">
     <div class="hadingDiv">
-        <h1>Employee Data</h1>
-        <button class="btn btn-info addBtn" routerLink="/employee">Add Employee</button>
+        <h1>Student Data</h1>
+        <button class="btn btn-info addBtn" routerLink="/employee">Add Student</button>
     </div>
     <div style="overflow-x:auto;">
         <table>
@@ -11,19 +11,39 @@
                 <th>Last Name</th>
                 <th>Registerted On</th>
                 <th>Class</th>
-                <th>View Details</th>
+                <th>Subject</th>
+                <th>Marks</th>
+                <th>Actions</th>
+                <!-- <th>View Details</th> -->
             </tr>
-            <tr *ngFor="let stu of stuData">
-                <td>{{stu?.regNo}}</td>
-                <td>{{stu?.firstName}}</td>
-                <td>{{stu?.lastName}}</td>
-                <td>{{stu?.registedOn | date}}</td>
-                <td>{{stu?.class}}</td>
-                <!-- <td><button type="button" class="btn btn-info" (click)="modalOpen(stu?._id)">Allocate</button></td> -->
-                <td><button type="button" class="btn btn-primary" [routerLink]="['/details', stu?._id]">View</button>
-                </td>
+            <ng-container *ngFor="let stu of stuData">
+                <tr *ngFor="let sub of stu?.subject; let i=index">
+                    <ng-container *ngIf="i==0;else subdiv">
+                        <td>{{stu?.regNo}}</td>
+                        <td>{{stu?.firstName}}</td>
+                        <td>{{stu?.lastName}}</td>
+                        <td>{{stu?.registedOn | date}}</td>
+                        <td>{{stu?.class}}</td>
+                        <td>{{sub?.subjectName}}</td>
+                        <td>{{sub?.marks}}</td>
+                        <td><a href="" [routerLink]="['/student', stu?._id]">Edit </a> |
+                            <a (click)="editDelete(stu?._id)">Delete</a>
+                        </td>
+                    </ng-container>
 
-            </tr>
+                    <ng-template #subdiv>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>{{sub?.subjectName}}</td>
+                        <td>{{sub?.marks}}</td>
+                        <td></td>
+                    </ng-template>
+                </tr>
+            </ng-container>
+
         </table>
     </div>
 </div>

@@ -64,7 +64,7 @@ export class AddStudentComponent implements OnInit {
           this.router.navigate(["/view"])
         } else {
           this.loading = false;
-          this.ts.pop("error", "", "Registered failed");
+          this.ts.pop("error", "", "Something wents wrong");
           //console.log("error invalid ");
         }
       },

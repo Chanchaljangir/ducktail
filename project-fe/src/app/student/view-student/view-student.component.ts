@@ -30,4 +30,7 @@ export class ViewStudentComponent implements OnInit {
       }
     });
   }
+  editRecord(id){
+    
+  }
 }

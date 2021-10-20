@@ -21,6 +21,9 @@ export class StudentServiceService {
   }
 
   getSpecificStudent(stuId) {
-    return this.http.get<any>(environment.baseURL + 'student/' + stuId)
+    return this.http.get<any>(environment.baseURL + 'studentById/' + stuId)
+  }
+  updateStudent(stuId, obj) {
+    return this.http.put<any>(environment.baseURL + 'student/' + stuId, obj)
   }
 }
