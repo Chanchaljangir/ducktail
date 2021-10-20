@@ -16,8 +16,8 @@ export class StudentServiceService {
     return this.http.post<any>(environment.baseURL + 'student', obj)
   }
 
-  getAllStudent() {
-    return this.http.get<any>(environment.baseURL + 'students')
+  getAllStudent(search, sort) {
+    return this.http.get<any>(environment.baseURL + 'students?search='+search + "&sort=" + sort)
   }
 
   getSpecificStudent(stuId) {

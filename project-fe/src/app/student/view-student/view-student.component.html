@@ -1,7 +1,16 @@
 <div class="main">
     <div class="hadingDiv">
         <h1>Student Data</h1>
-        <button class="btn btn-info addBtn" routerLink="/employee">Add Student</button>
+        <button class="btn btn-info addBtn" routerLink="/student">Add Student</button>
+    </div>
+    <div>
+        <label>Filter </label>
+        <select (change)="selectFilterValue($event.target.value)">
+            <option value="firstName">First Name</option>
+            <option value="class">Class</option>
+            <option value="RegNo">Registeration Number</option>
+            <option value="subjectName">Subject</option>
+        </select>
     </div>
     <div style="overflow-x:auto;">
         <table>

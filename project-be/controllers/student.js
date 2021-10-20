@@ -12,7 +12,6 @@ module.exports = {
             let stuFind = await Student.find({
                 regNo: req.body.regNo
             }).then(async function (data) {
-                console.log("data.......", data);
                 if (data.length > 0) {
                     respObj.IsSuccess = false;
                     respObj.Data = data
@@ -43,7 +42,9 @@ module.exports = {
         };
 
         try {
-            let result = await Student.find()
+            let filter = req.query.sort;
+            // {$text: {$search: req.query.search}}
+            let result = await Student.find().sort({ filter: 1 })
 
             respObj.IsSuccess = true;
             respObj.Data = result
@@ -110,7 +111,7 @@ module.exports = {
 
         try {
             let result = await Student.findByIdAndUpdate({ _id: req.params.stuId },
-             req.body)
+                req.body)
 
             respObj.IsSuccess = true;
             respObj.Data = result
@@ -123,5 +124,5 @@ module.exports = {
                 res.status(500).json(respObj);
         }
     },
- 
+
 }

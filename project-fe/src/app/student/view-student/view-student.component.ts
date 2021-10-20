@@ -10,6 +10,8 @@ declare var $;
 export class ViewStudentComponent implements OnInit {
   loading: boolean;
   stuData: any;
+  search: any= 'null';
+  sort: any = "firstName";
 
   constructor(private studentService: StudentServiceService, private ts: ToasterService,) {
   }
@@ -18,7 +20,7 @@ export class ViewStudentComponent implements OnInit {
     this.getAllStudents()
   }
   getAllStudents() {
-    this.studentService.getAllStudent().subscribe((res: any) => {
+    this.studentService.getAllStudent(this.search, this.sort).subscribe((res: any) => {
       this.loading = false;
       if (res.IsSuccess) {
         this.loading = false;
@@ -40,5 +42,9 @@ export class ViewStudentComponent implements OnInit {
         this.ts.pop("error", "", "Something wents wrong");
       }
     });
+  }
+  selectFilterValue(value){
+    this.sort = value
+    this.getAllStudents();
   }
 }

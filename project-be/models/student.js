@@ -38,7 +38,7 @@ const StudentSchema = new Schema({
     autoIndex: true,
     versionKey: false,
 });
-
+StudentSchema.index({'$**': 'String'});
 let Student = mongoose.model("Student", StudentSchema);
 
 module.exports = Student;
